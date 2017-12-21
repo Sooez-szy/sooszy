@@ -1,30 +1,28 @@
 package com.sooszy.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.*;
 import org.apache.commons.lang3.StringUtils;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.codehaus.jackson.type.JavaType;
-import org.codehaus.jackson.type.TypeReference;
 import java.text.SimpleDateFormat;
+
 
 public class JsonUtil{
     private static ObjectMapper objectMapper = new ObjectMapper();
     static {
         //对象的所有字段全部列入
-        objectMapper.setSerializationInclusion(Inclusion.ALWAYS);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
 
         //取消默认转换timesmaps形式
-        objectMapper.configure(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS,false);
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,false);
 
         //忽略空bean转json的错误
-        objectMapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,false);
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS,false);
 
         objectMapper.setDateFormat(new SimpleDateFormat(DateTimeUtil.STANDARD_FORMAT));
 
         //忽略 在json字符串中存在，但在java对象中不存在对应属性的情况。防止错误
-        objectMapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
     }
 
     public static <T> String obj2String(T obj){

@@ -15,7 +15,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class MyRealm extends AuthorizingRealm {
+/*public class MyRealm extends AuthorizingRealm {
 
     @Autowired
     private IUserService iUserService;
@@ -24,11 +24,11 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(
             PrincipalCollection principals) {
-        /*String username = (String) principals.getPrimaryPrincipal(); //获取用户名
+        *//*String username = (String) principals.getPrimaryPrincipal(); //获取用户名
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         authorizationInfo.setRoles(userService.getRoles(username));
         authorizationInfo.setStringPermissions(userService.getPermissions(username));
-        return authorizationInfo;*/
+        return authorizationInfo;*//*
         return null;
     }
 
@@ -47,9 +47,9 @@ public class MyRealm extends AuthorizingRealm {
         }
     }
 
-    /**
+    *//**
      * 保存登录名
-     */
+     *//*
     private void setSession(Object key, Object value){
         Session session = getSession();
         System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");
@@ -73,4 +73,4 @@ public class MyRealm extends AuthorizingRealm {
         }
         return null;
     }
-}
+}*/
